@@ -1,0 +1,38 @@
+#branchContainer,
+#checkoutNotify {
+	display:none;
+}
+form {
+	margin-bottom:0;
+}
+.form-stacked {
+	padding:0;
+}
+#repo {
+	float:left;
+	margin-right:10px;
+}
+.loader {
+	width:16px;
+	height:26px;
+	background:url('../graphics/loader.gif') center left no-repeat;
+	float:left;
+	display:none;
+	line-height:26px;
+	padding-left:26px;
+	color:#bfbfbf;
+}
+.alert-message {
+	text-align:center;
+}
+.clear { 
+	zoom:1;
+}
+.clear:after {
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	zoom:1;
+	visibility:hidden;
+}
