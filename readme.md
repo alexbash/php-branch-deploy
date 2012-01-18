@@ -6,8 +6,8 @@ PURPOSE
 A deployment script that can accessed from a browser. Once setup it can be used by any web developer no matter what skill level to deploy a branch and test it. Each branch has it's own subdomain, so any branch can be tested by any number of developers or clients at any time.
 
 i.e.
-The branch 'branch-name' will appear on domain http://branch-name.domain.com
-The branch 'branch-name2' will appear on domain http://branch-name2.domain.com
+The branch `branch-name` will appear on domain `http://branch-name.domain.com`
+The branch `branch-name2` will appear on domain `http://branch-name2.domain.com`
 
 If a developer pushes to a branch, a post-receive hook triggers the deploy script which then pulls into the corresponding branch on this dev server.
 
@@ -15,62 +15,63 @@ If a developer pushes to a branch, a post-receive hook triggers the deploy scrip
 REQUIREMENTS
 -----------------------------------------
 The setup requires :
-1. Root access to your server
-2. A moderate understanding of the command line, apache configuration and user permissions.
-3. git-core installation
-4. A github.com account and a repository to deploy (obviously)
+
+A. Root access to your server
+B. A moderate understanding of the command line, apache configuration and user permissions.
+C. git-core installation
+D. A github.com account and a repository to deploy (obviously)
 
 
 SETUP
 -----------------------------------------
 Here are the steps we took to setup this script. There could be differences if installing this script on various versions of linux and windows. So this is for guidance only.
 
-1. Create a root dir '/var/www/vhost/domain'
+1. Create a root dir `/var/www/vhost/domain`
 
 2. Configure apache vhost :
 
-<VirtualHost *:80>
+`<VirtualHost *:80>
     ServerName domain.com
     ServerAlias *.domain.com
     VirtualDocumentRoot /var/www/vhost/domain/%1.0/
-</VirtualHost>
+</VirtualHost>`
 
-3. Create a deploy folder '/var/www/vhost/domain/deploy'
-The deploy folder is now available on http://deploy.domain.com
+3. Create a deploy folder `/var/www/vhost/domain/deploy`
+The deploy folder is now available on `http://deploy.domain.com`
 
-4. Put the deploy scripts into '/var/www/vhost/domain/deploy'
+4. Put the deploy scripts into `/var/www/vhost/domain/deploy`
 
 5. Now setup keys for the apache user 
 
-$ sudo mkdir /var/www/.ssh
+`$ sudo mkdir /var/www/.ssh
 $ sudo chown -R apache:nobody /var/www/.ssh
-$ sudo -u apache ssh-keygen -t rsa
+$ sudo -u apache ssh-keygen -t rsa`
 
 (for more info on keys see http://help.github.com/mac-set-up-git/)
 
 6. Make sure that git is running
-> git --version
+`$ git --version`
 
 7. Setup config vars (http://help.github.com/set-your-user-name-email-and-github-token/)
 
-$ git config --global user.name "Firstname Lastname"
+`$ git config --global user.name "Firstname Lastname"
 $ git config --global user.email "your_email@youremail.com"
 $ git config --global github.user username
-$ git config --global github.token 0123456789yourf0123456789token
+$ git config --global github.token 0123456789yourf0123456789token`
 
-8. Make sure git is accessible at /usr/bin/git (or alter line 15 of deploy/git/Client.php)
+8. Make sure git is accessible at `/usr/bin/git` (or alter line 15 of deploy/git/Client.php)
 
 9. Disable known_hosts or copy from a user that has ssh'd to github.com
-cp /home/user/.ssh/known_hosts /var/www/.ssh/
-chown apache:nobody /var/www/.ssh/known_hosts
+`cp /home/user/.ssh/known_hosts /var/www/.ssh/
+chown apache:nobody /var/www/.ssh/known_hosts`
 
 10. Make root directory writeable by apache
-$ chown -R apache:apache /var/www/vhost/domain
+`$ chown -R apache:apache /var/www/vhost/domain`
 
 11. Setup post-receive hook (http://help.github.com/post-receive-hooks/)
-http://deploy.domain.com/pull.php
+`http://deploy.domain.com/pull.php`
 
-12. Setup your branches : http://deploy.domain.com/
+12. Setup your branches : `http://deploy.domain.com/`
 
 
 TROUBLESHOOTING
