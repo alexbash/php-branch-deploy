@@ -1,6 +1,3 @@
-php-branch-deploy
-
-
 PURPOSE
 -----------------------------------------
 A deployment script that can accessed from a browser. Once setup it can be used by any web developer no matter what skill level to deploy a branch and test it. Each branch has it's own subdomain, so any branch can be tested by any number of developers or clients at any time.
