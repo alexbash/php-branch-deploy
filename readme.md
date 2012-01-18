@@ -30,11 +30,11 @@ Here are the steps we took to setup this script. There could be differences if i
 
 2. Configure apache vhost :
 
-    <VirtualHost *:80>
+```    <VirtualHost *:80>
         ServerName domain.com
         ServerAlias *.domain.com
         VirtualDocumentRoot /var/www/vhost/domain/%1.0/
-    </VirtualHost>
+    </VirtualHost>```
 
 3. Create a deploy folder `/var/www/vhost/domain/deploy`
 The deploy folder is now available on `http://deploy.domain.com`
