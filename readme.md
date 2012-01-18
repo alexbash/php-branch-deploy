@@ -13,13 +13,10 @@ REQUIREMENTS
 -----------------------------------------
 The setup requires :
 
-A. Root access to your server
-
-B. A moderate understanding of the command line, apache configuration and user permissions.
-
-C. git-core installation
-
-D. A github.com account and a repository to deploy (obviously)
++ Root access to your server
++ A moderate understanding of the command line, apache configuration and user permissions.
++ git-core installation
++ A github.com account and a repository to deploy (obviously)
 
 
 SETUP
@@ -30,10 +27,10 @@ Here are the steps we took to setup this script. There could be differences if i
 
 2. Configure apache vhost :
 
-```    <VirtualHost *:80>
-        ServerName domain.com
-        ServerAlias *.domain.com
-        VirtualDocumentRoot /var/www/vhost/domain/%1.0/
+```    <VirtualHost *:80>  
+        ServerName domain.com  
+        ServerAlias *.domain.com  
+        VirtualDocumentRoot /var/www/vhost/domain/%1.0/  
     </VirtualHost>```
 
 3. Create a deploy folder `/var/www/vhost/domain/deploy`
