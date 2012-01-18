@@ -14,8 +14,11 @@ REQUIREMENTS
 The setup requires :
 
 A. Root access to your server
+
 B. A moderate understanding of the command line, apache configuration and user permissions.
+
 C. git-core installation
+
 D. A github.com account and a repository to deploy (obviously)
 
 
