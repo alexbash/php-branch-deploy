@@ -27,15 +27,11 @@ Here are the steps we took to setup this script. There could be differences if i
 
 2. Configure apache vhost :
 
-```    <VirtualHost *:80>
-
-        ServerName domain.com
-
-        ServerAlias *.domain.com
-
-        VirtualDocumentRoot /var/www/vhost/domain/%1.0/
-
-    </VirtualHost>```
+```<VirtualHost *:80>  
+ServerName domain.com  
+ServerAlias *.domain.com  
+VirtualDocumentRoot /var/www/vhost/domain/%1.0/  
+</VirtualHost>```
 
 3. Create a deploy folder `/var/www/vhost/domain/deploy`
 The deploy folder is now available on `http://deploy.domain.com`
@@ -55,9 +51,9 @@ The deploy folder is now available on `http://deploy.domain.com`
 
 7. Setup config vars (http://help.github.com/set-your-user-name-email-and-github-token/)
 
-```$ git config --global user.name "Firstname Lastname"
-$ git config --global user.email "your_email@youremail.com"
-$ git config --global github.user username
+```$ git config --global user.name "Firstname Lastname"  
+$ git config --global user.email "your_email@youremail.com"  
+$ git config --global github.user username  
 $ git config --global github.token 0123456789yourf0123456789token```
 
 8. Make sure git is accessible at `/usr/bin/git` (or alter line 15 of deploy/git/Client.php)
