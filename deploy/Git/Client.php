@@ -12,7 +12,7 @@ class Client
 	 * @todo Path is only required for Windows, put in check
 	 * @var string
 	 */
-	private $path = ':/usr/bin';
+	private $path = 'C:\Program Files (x86)\Git\bin';
 	
 	/**
 	 * Add Git to the PATH environment variable
