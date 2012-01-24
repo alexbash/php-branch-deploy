@@ -18,7 +18,12 @@ $(document).ready(function(){
 			});
 			$('#cloneContainer').hide();
 			$('#branchContainer').show();
-		}, 'json');
+		}, 'json')
+		
+		// Error handler - we'll make this nicer soon
+		.error(function(output){
+			alert(JSON.stringify(output));
+		});
 	});
 	
 	// Checkout the branch
@@ -32,7 +37,12 @@ $(document).ready(function(){
 			$('#branchContainer').hide();
 			$('#cloneContainer').show();
 			$('#checkoutNotify').show();
-		}, 'json');
+		}, 'json')
+		
+		// Error handler - we'll make this nicer soon
+		.error(function(output){
+			alert(JSON.stringify(output));
+		});
 	});
 	
 });
