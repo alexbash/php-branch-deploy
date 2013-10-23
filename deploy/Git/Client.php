@@ -12,7 +12,7 @@ class Client
 	 * @todo Path is only required for Windows, put in check
 	 * @var string
 	 */
-	private $path = 'C:\Program Files (x86)\Git\bin';
+	private $path = ':/usr/bin';
 	
 	/**
 	 * Add Git to the PATH environment variable
@@ -58,11 +58,18 @@ class Client
 		}
 		return array_unique($branches);
 	}
-	
-	public function checkout($branch)
+
+    /**
+     * Checkout branch
+     *
+     * @access public
+     * @param $branch
+     * @return string
+     */
+    public function checkout($branch)
 	{
 		if($branch != 'master') $branch = '-t ' . $branch;
-		$cmd = "git checkout $branch";
+		$cmd = "git checkout $branch 2>&1";
 		$output = $this->call($cmd);
 		return $output;
 	}
@@ -73,17 +80,35 @@ class Client
 		$output = $this->call($cmd);
 		return $output;
 	}
-	
-	/**
-	 * Execute the command
-	 * @param string $cmd
-	 */
-	private function call($cmd)
+
+    /**
+     * Execute the command
+     *
+     * @return string
+     * @param $cmd
+     * @return array
+     * @throws ClientException
+     */
+    private function call($cmd)
 	{
 		exec($cmd, $output, $status);
-		if($status != 0){
-			var_dump($output, $status);
+		if($status != 0 && $output){
+            throw new ClientException($status.' : '.$this->_array2String($output));
 		}
 		return $output;
 	}
+
+    /**
+     * Convert array to string
+     *
+     * @access private
+     * @param array $arr
+     * @param string $delimiter
+     * @return string
+     */
+    private function _array2String(array $arr, $delimiter = '\n')
+    {
+        return implode($delimiter, $arr);
+    }
 }
+class ClientException extends \Exception{}
