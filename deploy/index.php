@@ -2,8 +2,10 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="assets/js/jgrowl/jquery.jgrowl.min.css" />
 		<link rel="stylesheet" href="assets/css/style.css" />
 		<script src="assets/js/jquery-1.7.1.min.js"></script>
+		<script src="assets/js/jgrowl/jquery.jgrowl.min.js"></script>
 		<script src="assets/js/deploy.js"></script>
 	</head>
 	<body>
